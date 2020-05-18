@@ -3,5 +3,7 @@
 
 - name: Install wireguard
   package:
-    name: wireguard
+    name:
+      - linux-headers-amd64
+      - wireguard
     state: present

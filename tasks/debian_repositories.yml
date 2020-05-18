@@ -1,12 +1,6 @@
 ---
-- copy:
-    dest: /etc/apt/sources.list.d/unstable-wireguard.list
-    content: |
-      deb http://deb.debian.org/debian/ unstable main
-- copy:
-    dest: /etc/apt/preferences.d/limit-unstable
-    content: |
-      Package: *
-      Pin: release a=unstable
-      Pin-Priority: 150
-
+- name: add backports for Debian
+  apt_repository:
+    repo: 'deb http://deb.debian.org/debian {{ansible_distribution_release}}-backports main'
+    state: present
+    update_cache: yes
