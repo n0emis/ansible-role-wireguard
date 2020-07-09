@@ -1,7 +1,12 @@
 ---
-- include_tasks: "{{ ansible_os_family | lower }}_packages.yml"
+- include_tasks: "{{ ansible_distribution | lower }}_packages.yml"
   tags:
     - install
+
+- name: Load wireguard module
+  modprobe:
+    name: wireguard
+    state: present
 
 - name: Create /etc/wireguard
   file:

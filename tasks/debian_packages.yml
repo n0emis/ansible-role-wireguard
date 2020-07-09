@@ -1,5 +1,9 @@
 ---
-- include_tasks: "{{ ansible_distribution | lower }}_repositories.yml"
+- name: add backports for Debian
+  apt_repository:
+    repo: 'deb http://deb.debian.org/debian {{ansible_distribution_release}}-backports main'
+    state: present
+    update_cache: yes
 
 - name: Install wireguard
   package:
