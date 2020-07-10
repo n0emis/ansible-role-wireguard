@@ -5,9 +5,22 @@
     state: present
     update_cache: yes
 
-- name: Install wireguard
+- name: Install linux headers (debian)
   package:
     name:
       - linux-headers-amd64
+    state: present
+  when: ansible_distribution | lower == "debian"
+
+- name: Install linux headers (ubuntu)
+  package:
+    name:
+      - linux-generic
+    state: present
+  when: ansible_distribution | lower == "ubuntu"
+
+- name: Install wireguard
+  package:
+    name:
       - wireguard
     state: present
