@@ -1,5 +1,5 @@
 ---
-- include_tasks: "{{ ansible_distribution | lower }}_packages.yml"
+- include_tasks: "{{ ansible_os_family | lower }}_packages.yml"
   tags:
     - install
 
